@@ -10,7 +10,7 @@
 */
 
 function setSiteName() {
-    fetch('/config/siteconf.json')
+    fetch('https://www.github.com/0x4248/Blog/config/siteconf.json')
     .then(response => response.json())
     .then(data => {
         document.getElementById('sitename').innerHTML = data.sitename;
