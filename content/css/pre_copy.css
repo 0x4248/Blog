@@ -1,0 +1,35 @@
+/* MarkdownBlog
+ * Write blogs in markdown and generate static html files that are
+ * ready to be served by a web server and are hackable.
+ * Github: https://www.github.com/0x4248/MarkdownBlog
+ * Licence: GNU General Public License v3.0
+ * By: 0x4248 
+ *
+ * content/css/pre_copy.css
+ * This file contains the css for the copy button in the pre tag.
+*/
+
+.copy-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px 10px;
+    background-color: #00000000;
+    color: gray;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+pre {
+    position: relative;
+    padding-right: 60px;
+}
+
+.copy-button:hover {
+    background-color: #00000033;
+}
+
+.copy-button:active {
+    background-color: #00000066;
+}

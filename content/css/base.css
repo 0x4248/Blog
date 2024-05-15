@@ -1,0 +1,184 @@
+/* MarkdownBlog
+ * Write blogs in markdown and generate static html files that are
+ * ready to be served by a web server and are hackable.
+ * Github: https://www.github.com/0x4248/MarkdownBlog
+ * Licence: GNU General Public License v3.0
+ * By: 0x4248 
+ *
+ * content/css/base.css
+ * This file contains the base css for the blog.
+ * IMPORTANT: If you are modifying this for your blog, please edit 
+ * the content/css/custom.css file and not this file directly.
+ *
+ * I would recommend you to run `make css-create-custom` which copies
+ * this file to content/css/custom.css and then you can modify the
+ * custom.css file. In that way if you screw up the custom.css file
+* you can always run `make css-restore-base` to restore the base.css
+*/
+
+:root {
+    --text-primary: #222;
+    --code-text: #000000;
+    --code-bg: #eee;
+    --pre-bg: #f7f7f7;
+    --bg-primary: #eee;
+    --bg-secondary: #fff;
+    --link: #007bff;
+    --link-hover: #0056b3;
+    --footer-bg: #fff;
+    --nav-bg: #e9e9e95b;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+}
+
+pre {
+    display: block;
+    font-family: monospace;
+    font-size: 0.9em;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    color: var(--code-text);
+    background-color: var(--code-bg);
+}
+
+code {
+    font-family: monospace;
+    font-size: 0.9em;
+    color: var(--code-text);
+    background-color: var(--code-bg);
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bg-secondary);
+}
+
+.main {
+    margin: auto;
+    max-width: 1000px;
+    padding: 20px;
+    background-color: var(--bg-secondary);
+    border-radius: 10px;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: var(--nav-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+}
+
+.topnav a {
+    float: left;
+    color: var(--text-primary);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+.sitename {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.date {
+    font-size: 1em;
+    color: #777;
+    margin: 2px 0;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--footer-bg);
+    color: var(--text-primary);
+    margin-top: 100px;
+}
+
+
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #fff;
+        --code-text: #fff;
+        --code-bg: #333;
+        --pre-bg: #444;
+        --bg-primary: #333;
+        --bg-secondary: #444;
+        --link: #007bff;
+        --link-hover: #0056b3;
+        --footer-bg: #444;
+        --nav-bg: #3333335b;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+    .main {
+        max-width: 90%;
+    }
+}

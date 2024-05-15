@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Redirecting...</title>
+        <style>
+            :root {
+                --text-primary: #222;
+                --bg-primary: #eee;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                font-size: 16px;
+                color: var(--text-primary);
+                background-color: var(--bg-primary);
+            }
+
+            @media screen and (prefers-color-scheme: dark) {
+                :root {
+                    --text-primary: #fff;
+                    --bg-primary: #333;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <p>Redirecting... <a href="/www/index.html">Click here if you are not redirected.</a></p>
+    </body>
+    <script>
+        window.location.replace("/www/index.html");
+    </script>
+</html>
