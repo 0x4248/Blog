@@ -29,6 +29,9 @@
     --nav-bg: #e9e9e95b;
 }
 
+html {
+    scroll-behavior: smooth;
+}
 body {
     font-family: Arial, sans-serif;
     font-size: 16px;
@@ -39,7 +42,6 @@ body {
     padding: 0;
     scroll-behavior: smooth;
 }
-
 
 h1,
 h2,
@@ -60,17 +62,6 @@ a {
 a:hover {
     color: var(--link-hover);
     text-decoration: underline;
-}
-
-ul,
-ol {
-    margin: 0;
-    padding: 0;
-}
-
-li {
-    margin: 0;
-    padding: 0;
 }
 
 pre {
@@ -128,6 +119,7 @@ code {
     top: 0;
     z-index: 1000;
     backdrop-filter: blur(10px);
+    --webkit-backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
 }
