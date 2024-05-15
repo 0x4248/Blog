@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Linux from Scratch</title>
+        <meta name="description" content="In this post I will be discussing the process of building the Linux kernel and running it in qemu.">
+        <meta name="author" content="0x4248">
+        <meta name="keywords" content="Linux, Kernel, Qemu, Linux from Scratch">
+        <meta name="og:title" content="Linux from Scratch">
+        <meta name="og:description" content="In this post I will be discussing the process of building the Linux kernel and running it in qemu.">
+        <meta name="og:image" content="https://github.com/0x4248.png">
+        <meta name="og:created_time" content="2024-05-15">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://0x4248.github.io/Blog/content/css/base.css">
+        <link rel="stylesheet" href="https://0x4248.github.io/Blog/content/css/custom.css">
+        <link rel="stylesheet" href="https://0x4248.github.io/Blog/content/css/pre_copy.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    </head>
+    <body>
+        <div class='topnav' id='topnav'>
+            <a id="sitename" class="sitename" href="https://0x4248.github.io/Blog/pages/index.html"><i class="bi bi-journal-bookmark-fill"></i> MarkdownBlog</a>
+            <a href="https://0x4248.github.io/Blog/pages/index.html">Home</a>
+        </div>
+        <br style="width: 100px;">
+        <div class='main' id='main'>
+<p class='date'>2024-05-15</p>			<h1>Linux from scratch (ARM64)</h1>
+			<p>This is a tutorial on how to build linux from scratch </p>
+			<h2>Dependencies</h2>
+			<pre>
+apt-get update
+apt-get install -y git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison cpio
+
+apt-get install -y qemu-system-aarch64 vim nano
+			</pre>
+			
+			<h2>Downloading the sources</h2>
+			<p>We need to download the sources including the linux kernel and busybox.</p>
+			<pre>
+cd ~
+git clone https://www.github.com/torvalds/linux
+git clone https://www.github.com/mirror/busybox
+			</pre>
+			
+			<p>In future if the builds fail you can always re-download a stable version of the linux kernel from https://www.kernel.org/ and busybox from https://www.busybox.net/downloads/</p>
+			<h2>Building the linux kernel</h2>
+			<p>Now we need to build the linux kernel. First we need to configure the kernel. Run the following commands:</p>
+			<pre>
+cd ~/linux
+make menuconfig
+			</pre>
+			
+			<p>You can now configure the linux kernel to your needs. To save and exit press <code>esc</code> twice and press save.</p>
+			<pre>
+make -j$(nproc)
+			</pre>
+			
+			<p><strong>CHECK</strong> Has there been a file created called <code>arch/arm64/boot/Image</code> if not then the build has failed and you need to check the error messages and fix them.</p>
+			<h2>Building busybox</h2>
+			<p>Now we need to build busybox. First we need to configure busybox. Run the following commands:</p>
+			<pre>
+cd ~/busybox
+make defconfig
+make menuconfig
+			</pre>
+			
+			<p><strong>IMPORTANT STEP</strong> In the busybox configuration we need to change the <code>Build static binary (no shared libs)</code> to <code>y</code> and then save the configuration. This configuration is stored in <code>settings&gt;build options&gt;build static binary (no shared libs)</code>.</p>
+			<p>Now we can build busybox:</p>
+			<pre>
+make -j$(nproc)
+			</pre>
+			
+			<p>Now we need to install busybox to our source directory:</p>
+			<pre>
+make install
+			</pre>
+			
+			<p><strong>CHECK</strong> Has there been a folder created called <code>/busybox/_install</code>. This should contain the busybox binary's and the base initramfs. If not then the build has failed and you need to check the error messages and retry this step.</p>
+			<h2>Creating the initramfs</h2>
+			<p>Now we need to create the initramfs. Run the following commands:</p>
+			<pre>
+cd ~/busybox/_install
+mkdir -p dev
+mknod dev/console c 5 1
+mknod dev/ram b 1 0
+			</pre>
+			
+			<p>We now need to make a <code>init</code> script which will be the first thing that runs when we boot linux. Run the following command:</p>
+			<pre>
+nano init
+			</pre>
+			
+			<p>Or if you prefer vim:</p>
+			<pre>
+vim init
+			</pre>
+			
+			<p>This should put you in a text editor. Copy the following into it:</p>
+			<pre>
+#!/bin/sh
+mkdir /proc /sys /tmp
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t tmpfs none /tmp
+echo "Welcome to LFS"
+
+exec /bin/sh
+			</pre>
+			
+			<p>Now we need to make the init script executable:</p>
+			<pre>
+chmod a+x init
+			</pre>
+			
+			<p>Now we need to make the initramfs:</p>
+			<pre>
+find -print0 | cpio -0oH newc | gzip -9 > ~/initramfs.cpio.gz
+			</pre>
+			
+			<p>Now open finder and go to your <code>Documents/busybox</code> folder and you should see a file called <code>initramfs.cpio.gz</code>. Drag it to your user folder and rename it to <code>initramfs.cpio.gz</code>. This will be important later on.</p>
+			<h2>Running the linux kernel</h2>
+			<p>Now we have everything we need to run the linux kernel.</p>
+			<pre>
+qemu-system-aarch64 -kernel ~/linux/arch/arm64/boot/Image -initrd ~/initramfs.cpio.gz \
+  --append "root=/dev/ram rw init=/init.sh" -nographic \
+  -machine virt \
+  -cpu cortex-a57 \
+  -m 2G \
+			</pre>
+			
+			<p>This should boot linux and you should see the following:</p>
+			<pre>
+Welcome to LFS
+~ # 
+			</pre>
+			
+			<p>Congratulations you have now successfully built linux and ran it from scratch.</p>
+			<hr />
+			<h2>See also</h2>
+			<ul>
+			<li><a href="https://www.kernel.org/">Kernel.org</a></li>
+			<li><a href="https://www.linuxfromscratch.org/">Linux from scratch</a></li>
+			<li><a href="https://www.busybox.net/">Busybox</a></li>
+			<li><a href="https://www.qemu.org/">QEMU</a></li>
+			<li><a href="https://gist.github.com/0x4248/6e1499eb7a6d79349404780f14fdc38d">Original tutorial from github</a></li>
+			</ul>
+			<h2>References</h2>
+			<p>Thanks to the following references, without them this tutorial would not be possible:</p>
+			<ul>
+			<li><a href="https://www.linuxfromscratch.org/">Linux from scratch</a></li>
+			<li><a href="https://phoenixnap.com/kb/build-linux-kernel">PhoenixNAP</a></li>
+			<li><a href="https://ibug.io/blog/2019/04/os-lab-1/">iBug Blog</a></li>
+			<li><a href="https://www.kernel.org/doc/html/latest/">Kernel docs</a></li>
+			</ul>
+			<h2>Further reading</h2>
+			<ul>
+			<li><a href="https://kernelnewbies.org/KernelHacking">Kernel hacking guide (KernelNewbies)</a></li>
+			<li><a href="https://www.kernel.org/doc/html/latest/kernel-hacking/index.html">Kernel hacking guide (Kernel.org)</a></li>
+			</ul>
+
+            <p id="date"></p>
+            
+        </div>
+        <div class="footer" id="footer">
+            <a href="https://0x4248.github.io/Blog/pages/index.html">Home</a>
+            <p>Powered by <a href="https://www.github.com/0x4248/markdownblog">MarkdownBlog</a></p>
+        </div>
+        <script src="https://0x4248.github.io/Blog/content/js/checks.js" async defer></script>
+        <script src="https://0x4248.github.io/Blog/content/js/pre_copy.js" async defer></script>
+        <script src="https://0x4248.github.io/Blog/content/js/topnav.js" async defer></script>
+        <script src="https://0x4248.github.io/Blog/content/js/sitename.js" async defer></script>
+        <script src="https://0x4248.github.io/Blog//content/js/headdings.js" async defer></script>
+    </body>
+</html>
