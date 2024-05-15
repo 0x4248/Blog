@@ -2,4 +2,7 @@
 
 Here is a list of my blogs:
 
-<a href="FirstBlog">First Blog</a>
+<ul>
+    <li><a href="LFS">Linux from scratch (ARM64)</a>
+    <li><a href="FirstBlog">First Blog</a>
+</ul>
