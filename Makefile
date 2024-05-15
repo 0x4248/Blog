@@ -33,7 +33,7 @@ BASH = bash
 SRC = src
 CONTENT = content
 TOOLS = tools
-WWW = www
+WWW = pages
 
 ## Files ##
 MAIN = $(SRC)/main.py

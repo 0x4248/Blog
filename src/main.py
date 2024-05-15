@@ -66,9 +66,9 @@ def main():
         html_content = generate_html(meta, formatted_page_content, base_template)
 
         if page == "home":
-            output_path = "www/index.html"
+            output_path = "pages/index.html"
         else:
-            output_path = f"www/{page}/index.html"
+            output_path = f"pages/{page}/index.html"
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
         try:
