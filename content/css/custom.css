@@ -11,3 +11,30 @@
  * Edit this file as it is now or clone the content/css/base.css file
  * using make css-restore-base and then edit this file.
 */
+
+.author {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.left {
+    margin-right: 20px;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+}
+
+#author_img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+#author_name {
+    font-size: 20px;
+    font-weight: bold;
+}
