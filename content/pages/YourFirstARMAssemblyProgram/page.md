@@ -2,7 +2,6 @@
 
 This is a simple guide to writing your first ARM assembly program for linux. This guide will show you how to write a simple program that will print `Hello World` to the console.
 
-
 ## Installing required packages
 
 You will need to install the following packages:
@@ -72,6 +71,38 @@ To run the program, simply run:
 ```
 
 You should see `Hello world` printed to the console.
+
+## Explanation
+
+The program is divided into two sections: `.data` and `.text`. The `.data` section contains the string `Hello world\n` and the length of the string. The `.text` section contains the `_start` label which is the entry point of the program.
+
+```assembly
+.section .data
+    msg:
+        .ascii "Hello world\n"
+        len = . - msg
+```
+
+The `_start` label is the entry point of the program. and it is defined as a global symbol using the `.globl` directive.
+
+```assembly
+.section .text
+    .globl _start
+```
+
+In the `_start` section, we have the program instructions.
+
+```assembly
+_start:
+    mov x0, 1       // Set the file descriptor for stdout
+    ldr x1, =msg    // Load the address of the message into x1 (parameter 1 for stdout)
+    ldr x2, =len    // Load the length of the message into x2  (parameter 2 for stdout)
+    mov x8, 64      // Set the syscall number for write
+    svc 0           // Call the kernel
+    mov x8, 93      // Set the syscall number for exit
+    mov x0, 0       // Set the exit status (0 for success)
+    svc 0           // Call the kernel
+```
 
 ---
 ## See also
