@@ -12,7 +12,7 @@
 
 
 function checkForCustomCSS() {
-    fetch('/content/css/custom.css')
+    fetch('/Blog/content/css/custom.css')
     .then(response => {
         if (!response.ok) {
             console.error('MarkdownBlog [checks.js]:\nThe custom CSS file was not found\nYou can create it by running the following command:\n\nmake css-create-custom\n\nThat only applies if you want a custom CSS file')
