@@ -8,20 +8,20 @@ Here is a list of my blogs:
 
 
 ### Low Level Programming and OS Development
-<ul>
-    <li><a href="YourFirstARMAssemblyProgram">Your first ARM Assembly Program</a>
-    <li><a href="LFS">Linux from scratch (ARM64)</a>
+<ul style="list-style-type: none;">
+    <li><a href="YourFirstARMAssemblyProgram"><i class="bi bi-file-earmark"></i> Your First ARM Assembly Program</a>
+    <li><a href="LFS"><i class="bi bi-file-earmark"></i> Linux from scratch (ARM64)</a>
 </ul>
 
 
 ### Other
-<ul>
-    <li><a href="FirstBlog">First Blog</a>
+<ul style="list-style-type: none;">
+    <li><a href="FirstBlog"><i class="bi bi-file-earmark"></i> First Blog</a>
 </ul>
 
 ## Other pages
 
-<ul>
-    <li><a href="/">Main Website</a>
-    <li><a href="https://www.github.com/0x4248">Github</a>
+<ul style="list-style-type: none;">
+    <li><a href="/"><i class="bi bi-house-door-fill"></i> Main Website</a>
+    <li><a href="https://www.github.com/0x4248"><i class="bi bi-github"></i> Github</a>
 </ul>
