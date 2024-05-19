@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Turning files to videos</title>
+        <meta name="description" content="This is a simple guide on how to turn files into videos using ffmpeg">
+        <meta name="author" content="0x4248">
+        <meta name="keywords" content="ffmpeg, video, files, convert, linux">
+        <meta name="og:title" content="Turning files to videos">
+        <meta name="og:description" content="This is a simple guide on how to turn files into videos using ffmpeg">
+        <meta name="og:image" content="https://avatars.githubusercontent.com/u/60709927?v=4&s=200">
+        <meta name="og:created_time" content="2024-05-19">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://0x4248.github.io/Blog/content/css/base.css">
+        <link rel="stylesheet" href="https://0x4248.github.io/Blog/content/css/custom.css">
+        <link rel="stylesheet" href="https://0x4248.github.io/Blog/content/css/pre_copy.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://0x4248.github.io/cursor.js/css/cursor.css">
+        <link rel="stylesheet" href="https://0x4248.github.io/cursor.js/css/dark_mode.css">
+    </head>
+    <body>
+        <div class="cursor"></div>  
+        <div class="cursor-inner"></div>    
+
+        <div class='topnav' id='topnav'>
+            <a id="sitename" class="sitename" href="https://0x4248.github.io/Blog/pages/index.html"><i class="bi bi-journal-bookmark-fill"></i> MarkdownBlog</a>
+            <a href="https://0x4248.github.io">Main Website</a>
+        </div>
+        <br style="width: 100px;">
+        <div class='main' id='main'>
+<p class='date'>2024-05-19</p>			<h1>Turning files into videos</h1>
+			<p>I recently have seen a lot of videos on YouTube showing seemingly random static like videos. Here is an example of one of them:</p>
+			<p><strong>WARNING: This video contains flashing lights and is quite loud.</strong></p>
+			<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/M2x9PgNKbN4?si=32IZoCt4SGnLc3-R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+			
+			<p>I was curious about how these videos were made and I found out a way to make them using Python and ffmpeg.</p>
+			<h2>How to make these videos</h2>
+			<p>To start you will need to install python and ffmpeg. You can install python from <a href="https://www.python.org/downloads/">here</a> and ffmpeg from <a href="https://ffmpeg.org/download.html">here</a>.</p>
+			<p>If you are on Linux or macOS you an install ffmpeg and python using your package manager.</p>
+			<h3>Debian/Ubuntu</h3>
+			<pre>
+sudo apt install ffmpeg python3
+			</pre>
+			
+			<h3>Fedora</h3>
+			<pre>
+sudo dnf install ffmpeg python3
+			</pre>
+			
+			<h3>Arch Linux</h3>
+			<pre>
+sudo pacman -S ffmpeg python
+			</pre>
+			
+			<h3>macOS</h3>
+			<p><strong>Note:</strong> You will need to have <a href="https://brew.sh">Homebrew</a> installed to install ffmpeg.</p>
+			<pre>
+brew install ffmpeg python3
+			</pre>
+			
+			<h3>Windows</h3>
+			<p>You can download the installer for ffmpeg from <a href="https://ffmpeg.org/download.html">here</a> and python from <a href="https://www.python.org/downloads/">here</a>.</p>
+			<h2>Creating the video</h2>
+			<p>First we will need to make a python script that creates the frames for the video. The following script will create a video with random static like frames. Create a file called <code>convert.py</code> and paste the following code into it:</p>
+			<pre>
+import os
+
+input_file = "test.dat"
+output_folder = "frames"
+frame_width = 50
+frame_height = 50
+
+os.makedirs(output_folder, exist_ok=True)
+
+with open(input_file, "rb") as f:
+    data = f.read()
+
+total_bits = len(data) * 8
+total_frames = (total_bits + (frame_width * frame_height - 1)) // (frame_width * frame_height)
+
+for frame_index in range(total_frames):
+    with open(f"{output_folder}/frame_{frame_index:04d}.ppm", "w") as f:
+        f.write(f"P3\n{frame_width} {frame_height}\n1\n")
+
+        for y in range(frame_height):
+            for x in range(frame_width):
+                bit_index = frame_index * (frame_width * frame_height) + y * frame_width + x
+                if bit_index < total_bits:
+                    byte_index = bit_index // 8
+                    bit_in_byte = bit_index % 8
+                    bit_value = (data[byte_index] >> (7 - bit_in_byte)) & 1
+                    f.write(f"{bit_value} {bit_value} {bit_value} ")
+                else:
+                    f.write("0 0 0 ")
+            f.write("\n")
+			</pre>
+			
+			<p>This script will create a folder called <code>frames</code> and will create a frame for each bit in the input file. The input file is <code>test.dat</code> and you can change it to any file you want. The frames will be saved as <code>.ppm</code> files which are a simple image format that ffmpeg can read.</p>
+			<p>Now run the script using the following command:</p>
+			<pre>
+python3 convert.py
+			</pre>
+			
+			<h3>Converting the frames to a video</h3>
+			<p>Now that we have the frames we can convert them to a video using ffmpeg. Run the following command to convert the frames to a video:</p>
+			<pre>
+ffmpeg -r 30 -f image2 -i frames/frame_%04d.ppm -vcodec libx264 -pix_fmt yuv420p output.mp4
+			</pre>
+			
+			<p>This command will create a video called <code>output.mp4</code> with the frames in the <code>frames</code> folder. The <code>-r 30</code> flag sets the frame rate to 30 frames per second. You can change this value to any value you want.</p>
+			<h3>Upscaling the video (optional)</h3>
+			<p>You can upscale the video using ffmpeg to make it look better. Run the following command to upscale the video:</p>
+			<pre>
+ffmpeg -i output.mp4 -vf "scale=1000:1000:flags=neighbor" -c:a copy output_1000x1000.mp4  
+			</pre>
+			
+			<p>This command will upscale the video to 1000x1000 pixels. You can change the values to any value you want.</p>
+			<hr />
+			<h2>References</h2>
+			<ul>
+			<li><a href="https://ffmpeg.org/documentation.html">ffmpeg documentation</a></li>
+			<li><a href="https://www.youtube.com/watch?v=vUKQOypH6Ok">Modipaz youtube tutorial</a></li>
+			</ul>
+
+            <p id="date"></p>
+            
+        </div>
+        <div class="author" id="author">
+            <div class="left">
+                <img src="https://avatars.githubusercontent.com/u/60709927?s=100" alt="Author" id="author_img">
+            </div>
+            <div class="right">
+                <p id="author_name">Made with <i class="bi bi-heart-fill" style="color:red;"></i> by 0x4248</p>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="flex-left">
+                <img src="https://0x4248.github.io/icon_transparent.png" alt="0x4248" class="pixelate">
+            </div>
+            <div class="flex-right">
+                <p>0x4248</p>
+                <p><a href="https://www.github.com/0x4248"><i class="bi bi-github"></i> GitHub</a></p>
+                <p><a href="https://gist.github.com/0x4248"><i class="bi bi-file-earmark-code"></i> Gist</a></p>
+                <p><a href="https://www.openstreetmap.org/user/0x4248"><i class="bi bi-map-fill"></i> OpenStreetMap</a></p>
+                <p>Site links:</p>
+                <p><a href="https://0x4248.github.io/"><i class="bi bi-house-door-fill"></i> Home</a></p>
+                <p><a href="https://0x4248.github.io/appcenter"><i class="bi bi-boxes"></i> AppCenter</a></p>
+            </div>
+        </div>  
+        <script src="https://0x4248.github.io/Blog/content/js/checks.js" async defer></script>
+        <script src="https://0x4248.github.io/Blog/content/js/pre_copy.js" async defer></script>
+        <script src="https://0x4248.github.io/Blog/content/js/topnav.js" async defer></script>
+        <script src="https://0x4248.github.io/Blog/content/js/sitename.js" async defer></script>
+        <script src="https://0x4248.github.io/Blog/content/js/headdings.js" async defer></script>
+        <script src="https://0x4248.github.io/cursor.js/js/cursor.js"></script>
+    </body>
+</html>
