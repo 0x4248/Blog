@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Seing what files a process is using in Linux</title>
+        <meta name="description" content="This is a quick guide on how to see what files a process is using in Linux">
+        <meta name="author" content="0x4248">
+        <meta name="keywords" content="Linux, Process, Files">
+        <meta name="og:title" content="Seing what files a process is using in Linux">
+        <meta name="og:description" content="This is a quick guide on how to see what files a process is using in Linux">
+        <meta name="og:image" content="https://avatars.githubusercontent.com/u/60709927?v=4&s=200">
+        <meta name="og:created_time" content="2024-05-26">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://0x4248.github.io/Blog/content/css/base.css">
+        <link rel="stylesheet" href="https://0x4248.github.io/Blog/content/css/custom.css">
+        <link rel="stylesheet" href="https://0x4248.github.io/Blog/content/css/pre_copy.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://0x4248.github.io/cursor.js/css/cursor.css">
+        <link rel="stylesheet" href="https://0x4248.github.io/cursor.js/css/dark_mode.css">
+    </head>
+    <body>
+        <div class="cursor"></div>  
+        <div class="cursor-inner"></div>    
+
+        <div class='topnav' id='topnav'>
+            <a id="sitename" class="sitename" href="https://0x4248.github.io/Blog/pages/index.html"><i class="bi bi-journal-bookmark-fill"></i> MarkdownBlog</a>
+            <a href="https://0x4248.github.io">Main Website</a>
+        </div>
+        <br style="width: 100px;">
+        <div class='main' id='main'>
+<p class='date'>2024-05-26</p>			<h1>Seeing what files a process is using in Linux</h1>
+			<p>There are several ways to see what files a process is using in Linux:</p>
+			<ul>
+			<li><a href="#trough-&lt;code&gt;/proc&lt;/code&gt;-filesystem">Trough /proc filesystem</a></li>
+			<li><a href="#using-&lt;code&gt;lsof&lt;/code&gt;">Using lsof</a></li>
+			<li><a href="#using-&lt;code&gt;fuser&lt;/code&gt;">Using fuser</a></li>
+			</ul>
+			<h2>Trough <code>/proc</code> filesystem</h2>
+			<p>In linux the <code>/proc</code> filesystem is a virtual filesystem that provides a way to interact with the kernel and processes and retrieve information about running processes and kernel information. If you <code>cd</code> into <code>/proc</code> and <code>ls</code> you will see a list of directories with numbers as names.</p>
+			<pre>
+cd /proc
+ls -l
+			</pre>
+			
+			<p>You should see a similar output to this:</p>
+			<pre>
+total 0
+dr-xr-xr-x  9 root             root                           0 May 26 18:33 1/
+dr-xr-xr-x  9 root             root                           0 May 26 18:33 10/
+dr-xr-xr-x  9 root             root                           0 May 26 18:33 1072/
+<MORE OUTPUT>
+dr-xr-xr-x  9 root             root                           0 May 26 18:33 49/
+dr-xr-xr-x  9 root             root                           0 May 26 18:33 5/
+dr-xr-xr-x  9 root             root                           0 May 26 18:33 50/
+dr-xr-xr-x  9 root             root                           0 May 26 18:33 52/
+dr-xr-xr-x  9 systemd-timesync systemd-timesync               0 May 26 18:33 524/
+dr-xr-xr-x  9 root             root                           0 May 26 18:33 54/
+dr-xr-xr-x  9 root             root                           0 May 26 18:33 546/
+dr-xr-xr-x  9 root             root                           0 May 26 18:33 55/
+<MORE OUTPUT>
+dr-xr-xr-x  2 root             root                           0 May 26 18:33 acpi/
+dr-xr-xr-x 13 root             root                           0 May 26 18:33 asound/
+-r--r--r--  1 root             root                           0 May 26 19:07 buddyinfo
+dr-xr-xr-x  4 root             root                           0 May 26 19:07 bus/
+-r--r--r--  1 root             root                           0 May 26 18:33 cgroups
+-r--r--r--  1 root             root                           0 May 26 18:33 cmdline
+-r--r--r--  1 root             root                           0 May 26 19:07 consoles
+-r--r--r--  1 root             root                           0 May 26 18:33 cpuinfo
+-r--r--r--  1 root             root                           0 May 26 19:07 crypto
+-r--r--r--  1 root             root                           0 May 26 18:33 devices
+-r--r--r--  1 root             root                           0 May 26 18:33 diskstats
+dr-xr-xr-x  3 root             root                           0 May 26 19:07 driver/
+dr-xr-xr-x  3 root             root                           0 May 26 19:07 dynamic_debug/
+-r--r--r--  1 root             root                           0 May 26 19:07 execdomains
+-r--r--r--  1 root             root                           0 May 26 19:07 fb
+-r--r--r--  1 root             root                           0 May 26 18:33 filesystems
+dr-xr-xr-x  5 root             root                           0 May 26 19:07 fs/
+-r--r--r--  1 root             root                           0 May 26 19:07 interrupts
+-r--r--r--  1 root             root                           0 May 26 19:07 iomem
+-r--r--r--  1 root             root                           0 May 26 19:07 ioports
+dr-xr-xr-x 55 root             root                           0 May 26 19:07 irq/
+-r--r--r--  1 root             root                           0 May 26 19:07 kallsyms
+<MORE FILES BELOW>
+			</pre>
+			
+			<p>Each number directory corresponds to a process running on the system. If you <code>cd</code> into one of these directories you will see a list of files that contain information about the process. Here you can see everything from the command line that started the process to the environment variables that the process is using. We are interested in the <code>fd</code> directory which contains the file descriptors that the process is using.</p>
+			<p>For a test lets spin up python and open a file:</p>
+			<pre>
+touch test.txt
+python3
+			</pre>
+			
+			<p>Then on the prompt we type the following:</p>
+			<pre>
+f = open('test.txt', 'w')
+			</pre>
+			
+			<p>Now run <code>ps</code> to get the PID of the python process:</p>
+			<pre>
+ps aux | grep python
+			</pre>
+			
+			<p>You should see an output similar to this:</p>
+			<pre>
+    5452 pts/1    S+     0:00 python3
+    5576 pts/0    S+     0:00 grep --color=auto python
+			</pre>
+			
+			<p>The PID of the python process is <code>5452</code>. This will be different on your system. Now <code>cd</code> into the <code>/proc</code> directory and <code>ls</code>:</p>
+			<pre>
+cd /proc/<PID>
+			</pre>
+			
+			<p>Now cd into the <code>fd</code> directory:</p>
+			<pre>
+cd fd
+			</pre>
+			
+			<p>Now <code>ls</code> to see the file descriptors that the process is using:</p>
+			<pre>
+ls -l
+			</pre>
+			
+			<p>You should see an output similar to this:</p>
+			<pre>
+lrwx------ 1 admin admin 64 May 26 19:25 0 -> /dev/pts/1
+lrwx------ 1 admin admin 64 May 26 19:25 1 -> /dev/pts/1
+lrwx------ 1 admin admin 64 May 26 19:25 2 -> /dev/pts/1
+l-wx------ 1 admin admin 64 May 26 19:25 3 -> /home/admin/test.txt
+			</pre>
+			
+			<p>The file descriptor <code>3</code> is the file that we opened in python. You can see that the file descriptor is pointing to the file <code>test.txt</code>.</p>
+			<h2>Using <code>lsof</code></h2>
+			<p><code>lsof</code> is a command that lists open files. You can use <code>lsof</code> to see what files a process is using. To see what files a process is using you can run the following command:</p>
+			<pre>
+lsof -p <PID>
+			</pre>
+			
+			<p>Using our same python example from before:</p>
+			<pre>
+lsof -p 5452
+			</pre>
+			
+			<p>You should see an output similar to this:</p>
+			<pre>
+COMMAND  PID  USER   FD   TYPE DEVICE SIZE/OFF    NODE NAME
+python3 5452 admin  cwd    DIR  254,2     4096 4718594 /home/admin
+python3 5452 admin  rtd    DIR  254,2     4096       2 /
+<MORE OUTPUT>
+python3 5452 admin    0u   CHR  136,1      0t0       4 /dev/pts/1
+python3 5452 admin    1u   CHR  136,1      0t0       4 /dev/pts/1
+python3 5452 admin    2u   CHR  136,1      0t0       4 /dev/pts/1
+python3 5452 admin    3w   REG  254,2        0 4771062 /home/admin/test.txt
+			</pre>
+			
+			<p>You can see that the file <code>test.txt</code> is being used by the python process.</p>
+			<h2>Using <code>fuser</code></h2>
+			<p><code>fuser</code> is a command that displays the PIDs of processes using the specified files or file systems. To see what files a process is using you can run the following command:</p>
+			<pre>
+fuser -v <file>
+			</pre>
+			
+			<p>Using our same python example from before:</p>
+			<pre>
+fuser -v test.txt
+			</pre>
+			
+			<p>You should see an output similar to this:</p>
+			<pre>
+                     USER        PID ACCESS COMMAND
+/home/admin/test.txt:
+                     admin      5452 F.... python3
+			</pre>
+			
+			<p>You can see that the file <code>test.txt</code> is being used by the python process.</p>
+			<hr />
+			<h2>See also</h2>
+			<ul>
+			<li><a href="https://www.kernel.org/doc/html/latest/filesystems/proc.html">The /proc filesystem - kernel.org</a></li>
+			<li><a href="https://www.man7.org/linux/man-pages/man5/proc.5.html">proc(5) -  man7.org</a></li>
+			<li><a href="https://www.man7.org/linux/man-pages/man8/lsof.8.html">lsof(8) - man7.org</a></li>
+			<li><a href="https://www.man7.org/linux/man-pages/man1/fuser.1.html">fuser(1) - man7.org</a></li>
+			</ul>
+			<h2>Read more</h2>
+			<ul>
+			<li><a href="https://www.kernel.org/doc/html/latest/filesystems/index.html">The linux file system - kernel.org</a></li>
+			<li><a href="https://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/index.html">Linux File System Hierarchy - tldp.org</a></li>
+			</ul>
+
+            <p id="date"></p>
+            
+        </div>
+        <div class="author" id="author">
+            <div class="left">
+                <img src="https://avatars.githubusercontent.com/u/60709927?s=100" alt="Author" id="author_img">
+            </div>
+            <div class="right">
+                <p id="author_name">Made with <i class="bi bi-heart-fill" style="color:red;"></i> by 0x4248</p>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="flex-left">
+                <img src="https://0x4248.github.io/icon_transparent.png" alt="0x4248" class="pixelate">
+            </div>
+            <div class="flex-right">
+                <p>0x4248</p>
+                <p><a href="https://www.github.com/0x4248"><i class="bi bi-github"></i> GitHub</a></p>
+                <p><a href="https://gist.github.com/0x4248"><i class="bi bi-file-earmark-code"></i> Gist</a></p>
+                <p><a href="https://www.openstreetmap.org/user/0x4248"><i class="bi bi-map-fill"></i> OpenStreetMap</a></p>
+                <p>Site links:</p>
+                <p><a href="https://0x4248.github.io/"><i class="bi bi-house-door-fill"></i> Home</a></p>
+                <p><a href="https://0x4248.github.io/appcenter"><i class="bi bi-boxes"></i> AppCenter</a></p>
+            </div>
+        </div>  
+        <script src="https://0x4248.github.io/Blog/content/js/checks.js" async defer></script>
+        <script src="https://0x4248.github.io/Blog/content/js/pre_copy.js" async defer></script>
+        <script src="https://0x4248.github.io/Blog/content/js/topnav.js" async defer></script>
+        <script src="https://0x4248.github.io/Blog/content/js/sitename.js" async defer></script>
+        <script src="https://0x4248.github.io/Blog/content/js/headdings.js" async defer></script>
+        <script src="https://0x4248.github.io/cursor.js/js/cursor.min.js"></script>
+    </body>
+</html>

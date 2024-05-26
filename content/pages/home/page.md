@@ -7,9 +7,9 @@ Here you will find my blogs on various topics in the field of computer science a
 Here is a list of my blogs:
 
 
-### FFmpeg
+### Linux
 <ul style="list-style-type: none;">
-    <li><a href="TurningFilesToVideos"><i class="bi bi-file-earmark"></i> Turning files into videos</a>
+    <li><a href="SeeingWhatFilesAProcessIsUsing"><i class="bi bi-file-earmark"></i> Seeing what files a process is using in Linux</a>
 </ul>
 
 ### Low Level Programming and OS Development
@@ -18,6 +18,10 @@ Here is a list of my blogs:
     <li><a href="LFS"><i class="bi bi-file-earmark"></i> Linux from scratch (ARM64)</a>
 </ul>
 
+### FFmpeg
+<ul style="list-style-type: none;">
+    <li><a href="TurningFilesToVideos"><i class="bi bi-file-earmark"></i> Turning files into videos</a>
+</ul>
 
 ### Other
 <ul style="list-style-type: none;">
