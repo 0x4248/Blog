@@ -18,6 +18,13 @@ Here is a list of my blogs:
     <li><a href="LFS"><i class="bi bi-file-earmark"></i> Linux from scratch (ARM64)</a>
 </ul>
 
+
+### Obsidian
+
+<ul style="list-style-type: none;">
+    <li><a href="HowIUseObsidian"><i class="bi bi-file-earmark"></i> How I use Obsidian</a>
+</ul>
+
 ### FFmpeg
 <ul style="list-style-type: none;">
     <li><a href="TurningFilesToVideos"><i class="bi bi-file-earmark"></i> Turning files into videos</a>
