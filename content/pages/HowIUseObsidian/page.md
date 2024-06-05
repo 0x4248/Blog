@@ -1,3 +1,4 @@
+# How I use obsidian
 ## What is obsidian? 
 Obsidian is a markdown note taking app that is heavily customisable and and be used for almost any type of notes.
 
