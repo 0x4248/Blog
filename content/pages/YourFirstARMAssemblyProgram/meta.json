@@ -1,5 +1,5 @@
 {
-    "location": "/pages/YourFirstARMAssemblyProgram",
+    "location": "/Blog/pages/YourFirstARMAssemblyProgram",
     "Title": "Your first ARM assembly program",
     "Description": "In this article, we will write a simple ARM assembly program that prints a message to the console.",
     "Date": "2024-05-16",

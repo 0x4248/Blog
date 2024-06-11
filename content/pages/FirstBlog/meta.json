@@ -1,5 +1,5 @@
 {
-    "location": "/pages/FirstBlog",
+    "location": "/Blog/pages/FirstBlog",
     "Title": "First blog",
     "Description": "This is the first MarkdownBlog post to be published on the 0x4248 blog.",
     "Date": "2024-05-15",

@@ -1,5 +1,5 @@
 {
-    "location": "/pages/LFS",
+    "location": "/Blog/pages/LFS",
     "Title": "Linux from Scratch",
     "Description": "In this post I will be discussing the process of building the Linux kernel and running it in qemu.",
     "Date": "2024-05-15",

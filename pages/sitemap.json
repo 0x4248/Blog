@@ -14,7 +14,7 @@
             ]
         },
         {
-            "location": "/pages/YourFirstARMAssemblyProgram",
+            "location": "/Blog/pages/YourFirstARMAssemblyProgram",
             "Title": "Your first ARM assembly program",
             "Description": "In this article, we will write a simple ARM assembly program that prints a message to the console.",
             "Date": "2024-05-16",
@@ -29,7 +29,7 @@
             ]
         },
         {
-            "location": "/pages/LFS",
+            "location": "/Blog/pages/LFS",
             "Title": "Linux from Scratch",
             "Description": "In this post I will be discussing the process of building the Linux kernel and running it in qemu.",
             "Date": "2024-05-15",
@@ -43,7 +43,7 @@
             ]
         },
         {
-            "location": "/pages/FirstBlog",
+            "location": "/Blog/pages/FirstBlog",
             "Title": "First blog",
             "Description": "This is the first MarkdownBlog post to be published on the 0x4248 blog.",
             "Date": "2024-05-15",
@@ -67,7 +67,7 @@
             ]
         },
         {
-            "location": "/pages/HowIUseObsidian",
+            "location": "/Blog/pages/HowIUseObsidian",
             "Title": "How I use Obsidian",
             "Description": "In this post, I will explain how I use Obsidian to take notes, manage my projects, and capture my ideas.",
             "Date": "2024-06-05",
