@@ -1,7 +1,7 @@
 {
     "pages": [
         {
-            "location": "/pags/TurningFilesToVideos",
+            "location": "/Blog/pages/TurningFilesToVideos",
             "Title": "Turning files to videos",
             "Description": "This is a simple guide on how to turn files into videos using ffmpeg",
             "Date": "2024-05-19",
@@ -55,7 +55,7 @@
             ]
         },
         {
-            "location": "/index.html",
+            "location": "/Blog/pages/SeeingWhatFilesAProcessIsUsing",
             "Title": "Seing what files a process is using in Linux",
             "Description": "This is a quick guide on how to see what files a process is using in Linux",
             "Date": "2024-05-26",
