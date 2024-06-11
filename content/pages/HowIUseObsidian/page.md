@@ -15,9 +15,10 @@ My vault is configured in a way that makes it easy to navigate between the diffe
 
 ### Extensions
 Firstly lets talk about what extensions i'm using. Im currently using the following:
+
 - Home tab
 - Kanban
-- Exalidraw
+- Excalidraw
 - Completr
 - File color
 - Iconize
@@ -31,7 +32,7 @@ Firstly lets talk about what extensions i'm using. Im currently using the follow
 Home tab is a plugin that puts a search page on each new tab to quickly find files
 #### Kanban
 Kanban is a plugin that allows you to create kanban boards in obsidian to keep track of tasks and projects.
-#### Exalidraw
+#### Excalidraw
 Exalidraw is a plugin that allows you to create diagrams in obsidian.
 #### Completr
 Completr is a plugin that allows you to autocomplete whole words to speed up typing.
@@ -53,11 +54,12 @@ Calendar is a plugin that allows you to create a calendar in obsidian.
 Linter is a plugin that checks your markdown for errors.
 ### File structure
 My vault is structured in a way that sections out the different types of notes.
+
 - 00 Maps
 - 01 Areas
 - 02 Daily
 - 03 Fleeting
-- 04 Archive
+- 04 Resources
 - 05 Projects
 - 06 Archive
 - 07 Literature
@@ -66,6 +68,7 @@ My vault is structured in a way that sections out the different types of notes.
 Maps are files that contain links to parts of my vault. There like mini maps for sections of my vault to help me find my way around the vault.
 #### Areas
 Areas is the different interests and areas of my life that I have notes on. In my vault there are the following sub folders:
+
 - Programming
 - Cybersecurity
 - Linux
@@ -78,6 +81,7 @@ Areas is the different interests and areas of my life that I have notes on. In m
 - Aviation
 
 In your vault you can have any thing:
+
 - Cooking
 - Gardening
 - Writing
@@ -90,12 +94,10 @@ In here I have notes that are daily notes that I write to keep track of what I h
 I use template to autofill things like the date and basic structure of the page.
 #### Fleeting
 Fleeting notes are notes that are quick notes that I write down to remember things or ideas that I have and want to quickly write down.
-#### Archive
-Archive is where I put notes that are no longer relevant or old notes that I don't need to see all the time.
-
-Keeping archived notes is good because you can always go back and look at them if you need to.
+#### Resources
+Resources is where I keep things like quick tips, cheetsheets and other things that can be quickly used as reference or to help me remember things. Lets say I keep forgetting a bash. So I would look it up and write it down in a note in the resources folder. That way I can quickly look it up in my own notes.
 #### Projects
-Projects is where I keep notes on projects that I am working on.
+Projects is where all my projects are kept. Each project has its own folder with notes on the project and its progress.
 #### Archive
 Here is where old notes that are no longer needed are placed but might come in use at a future date. Lets say its a old project for example.
 #### Literature
@@ -184,6 +186,7 @@ There are many CSS classes that I use. Many of which are inspired by [CyanVoxel'
 - `lato-headings`
 #### Fonts
 The main font in the vault is Jetbrains Mono with neardfonts. Here are all the fonts I use.
+
 - GohuFont uni11 Nerd Font Mono
 - Perfect DOS VGA 437
 - Bai Jamjuree
