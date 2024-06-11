@@ -1,5 +1,5 @@
 # First blog
-
+***
 This is the very first MarkdownBlog post to be published.
 
 ## What is MarkdownBlog?

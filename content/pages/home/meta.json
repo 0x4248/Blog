@@ -1,9 +1,10 @@
 {
-    "location": "/index.html",
+    "location": "/pages/",
     "Title": "0x4248's Blog - Home",
     "Description": "Welcome to 0x4248's Blog",
     "Date": "",
     "Keywords": "home, page, website, index",
     "Author": "0x4248",
-    "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200"
+    "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200",
+    "Tags": ["general"]
 }

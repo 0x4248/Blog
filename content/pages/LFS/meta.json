@@ -1,9 +1,10 @@
 {
-    "location": "/index.html",
+    "location": "/pages/LFS",
     "Title": "Linux from Scratch",
     "Description": "In this post I will be discussing the process of building the Linux kernel and running it in qemu.",
     "Date": "2024-05-15",
     "Keywords": "Linux, Kernel, Qemu, Linux from Scratch",
     "Author": "0x4248",
-    "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200"
+    "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200",
+    "Tags": ["Linux", "OS Development", "Linux from Scratch"]
 }

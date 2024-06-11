@@ -14,6 +14,8 @@ import json
 from lib import logger
 from lib import formatter
 
+ROOT = "pages"
+
 def get_pages():
     os.chdir("content/pages")
     pages = os.listdir()
@@ -43,10 +45,27 @@ def generate_html(meta, formatted_page_content, base_template):
     base = base.replace('<meta name="og:created_time" content="">', f'<meta name="og:created_time" content="{meta["Date"]}">')
     return base
 
+def add_to_sitemap_json(meta):
+    try:
+        with open("pages/sitemap.json") as f:
+            sitemap = json.load(f)
+            if meta["Date"] == "":
+                return
+    except FileNotFoundError:
+        sitemap = {"pages": []}
+    sitemap["pages"].append(meta)
+    with open(ROOT + "/sitemap.json", "w") as f:
+        json.dump(sitemap, f, indent=4)
+
+def flush_sitemap_json():
+    with open(ROOT + "/sitemap.json", "w") as f:
+        json.dump({"pages": []}, f, indent=4)
+
 def main():
     logger.log("Starting MarkdownBlog")
     pages = get_pages()
     logger.debug(f"Found {len(pages)} pages")
+    flush_sitemap_json()
 
     base_template_path = "content/html/base.html"
     try:
@@ -54,6 +73,18 @@ def main():
             base_template = f.read()
     except FileNotFoundError:
         logger.error("Base template file not found.")
+        return
+    
+    posts_html_path = "content/html/posts.html"
+    try:
+        with open(posts_html_path) as f:
+            posts_html = f.read()
+            os.makedirs("posts", exist_ok=True)
+            with open("posts/index.html", "w") as f:
+                f.write(posts_html)
+
+    except FileNotFoundError:
+        logger.error("Posts HTML file not found.")
         return
 
     for page in pages:
@@ -64,11 +95,12 @@ def main():
 
         formatted_page_content = formatter.format_page_content(page_content)
         html_content = generate_html(meta, formatted_page_content, base_template)
+        add_to_sitemap_json(meta)
 
         if page == "home":
-            output_path = "pages/index.html"
+            output_path = ROOT + "/index.html"
         else:
-            output_path = f"pages/{page}/index.html"
+            output_path = ROOT + f"/{page}/index.html"
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
         try:

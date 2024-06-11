@@ -1,5 +1,5 @@
 # Seeing what files a process is using in Linux
-
+***
 There are several ways to see what files a process is using in Linux:
 
 - [Trough /proc filesystem](#trough-<code>/proc</code>-filesystem)

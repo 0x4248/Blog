@@ -1,5 +1,5 @@
 # Your first ARM Assembly Program
-
+***
 This is a simple guide to writing your first ARM assembly program for linux. This guide will show you how to write a simple program that will print `Hello World` to the console.
 
 ## Installing required packages
