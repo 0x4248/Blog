@@ -4,7 +4,7 @@ My name is 0x4248 here you will find my blogs on various topics in the field of 
 
 ## Blogs
 
-For a full list of blogs click [here](https://0x4248.github.io/Blog/pages).
+For a full list of blogs click [here](https://0x4248.tech/Blog/pages).
 
 ### Featured Blogs
 <ul style="list-style-type: none;">
