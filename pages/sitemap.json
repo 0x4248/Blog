@@ -27,6 +27,19 @@
             ]
         },
         {
+            "location": "/Blog/pages/whyyoumightconsiderdegooglingyourlife",
+            "Title": "Why You Might Consider De-Googling Your Life",
+            "Description": "A brief overview of the reasons why you might consider de-Googling your life.",
+            "Date": "2024-06-16",
+            "Keywords": "Google, Privacy, Security, De-Googling",
+            "Author": "0x4248",
+            "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200",
+            "Tags": [
+                "Privacy",
+                "Security"
+            ]
+        },
+        {
             "location": "/Blog/pages/YourFirstARMAssemblyProgram",
             "Title": "Your first ARM assembly program",
             "Description": "In this article, we will write a simple ARM assembly program that prints a message to the console.",
