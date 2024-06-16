@@ -14,7 +14,7 @@ Google search is the most popular search engine and is used by millions every da
 
 DuckDuckGo is a good alternative to google since there is no signup or logins and no tracking links. Even the tor browser uses DuckDuckGo as its default search engine.
 ### Google keep
-A good alternative to google keep is Obsidian. Obsidian is a not taking app that does not use the cloud to store the notes.
+A good alternative to google keep is Obsidian. Obsidian is a note taking app that does not use the cloud to store the notes.
 ### Gmail
 Instead of gmail I use proton mail which is better for privacy.
 ### Google maps
