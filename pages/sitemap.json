@@ -1,53 +1,16 @@
 {
     "pages": [
         {
-            "location": "/Blog/pages/FirstBlog",
-            "Title": "First blog",
-            "Description": "This is the first MarkdownBlog post to be published on the 0x4248 blog.",
-            "Date": "2024-05-15",
-            "Keywords": "first, blog, markdown",
+            "location": "/Blog/pages/WhyTechCompaniesShouldGiveMoreConsent",
+            "Title": "Why Tech Companies Should Give More Consent",
+            "Description": "Recently tech giants have been focusing on AI and on how it can help you as a person get things done. Recently AI models have switched from learning off books and the internet to learning off you as a person. This can be a problem for your privacy.",
+            "Date": "2024-06-12",
+            "Keywords": "AI, Privacy, Consent, Tech Companies",
             "Author": "0x4248",
-            "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200",
+            "Image": "",
             "Tags": [
-                "general"
-            ]
-        },
-        {
-            "location": "/Blog/pages/HowIUseObsidian",
-            "Title": "How I use Obsidian",
-            "Description": "In this post, I will explain how I use Obsidian to take notes, manage my projects, and capture my ideas.",
-            "Date": "2024-06-05",
-            "Keywords": "Obsidian, Note-taking, Productivity",
-            "Author": "0x4248",
-            "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200",
-            "Tags": [
-                "Obsidian"
-            ]
-        },
-        {
-            "location": "/Blog/pages/LFS",
-            "Title": "Linux from Scratch",
-            "Description": "In this post I will be discussing the process of building the Linux kernel and running it in qemu.",
-            "Date": "2024-05-15",
-            "Keywords": "Linux, Kernel, Qemu, Linux from Scratch",
-            "Author": "0x4248",
-            "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200",
-            "Tags": [
-                "Linux",
-                "OS Development",
-                "Linux from Scratch"
-            ]
-        },
-        {
-            "location": "/Blog/pages/SeeingWhatFilesAProcessIsUsing",
-            "Title": "Seing what files a process is using in Linux",
-            "Description": "This is a quick guide on how to see what files a process is using in Linux",
-            "Date": "2024-05-26",
-            "Keywords": "Linux, Process, Files",
-            "Author": "0x4248",
-            "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200",
-            "Tags": [
-                "Linux"
+                "Privacy",
+                "AI"
             ]
         },
         {
@@ -64,16 +27,16 @@
             ]
         },
         {
-            "location": "/Blog/pages/WhyTechCompaniesShouldGiveMoreConsent",
-            "Title": "Why Tech Companies Should Give More Consent",
-            "Description": "Recently tech giants have been focusing on AI and on how it can help you as a person get things done. Recently AI models have switched from learning off books and the internet to learning off you as a person. This can be a problem for your privacy.",
-            "Date": "2024-06-12",
-            "Keywords": "AI, Privacy, Consent, Tech Companies",
+            "location": "/Blog/pages/whyyoumightconsiderdegooglingyourlife",
+            "Title": "Why You Might Consider De-Googling Your Life",
+            "Description": "A brief overview of the reasons why you might consider de-Googling your life.",
+            "Date": "2024-06-16",
+            "Keywords": "Google, Privacy, Security, De-Googling",
             "Author": "0x4248",
-            "Image": "",
+            "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200",
             "Tags": [
                 "Privacy",
-                "AI"
+                "Security"
             ]
         },
         {
@@ -92,16 +55,67 @@
             ]
         },
         {
-            "location": "/Blog/pages/whyyoumightconsiderdegooglingyourlife",
-            "Title": "Why You Might Consider De-Googling Your Life",
-            "Description": "A brief overview of the reasons why you might consider de-Googling your life.",
-            "Date": "2024-06-16",
-            "Keywords": "Google, Privacy, Security, De-Googling",
+            "location": "/Blog/pages/LFS",
+            "Title": "Linux from Scratch",
+            "Description": "In this post I will be discussing the process of building the Linux kernel and running it in qemu.",
+            "Date": "2024-05-15",
+            "Keywords": "Linux, Kernel, Qemu, Linux from Scratch",
             "Author": "0x4248",
             "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200",
             "Tags": [
-                "Privacy",
-                "Security"
+                "Linux",
+                "OS Development",
+                "Linux from Scratch"
+            ]
+        },
+        {
+            "location": "/Blog/pages/FirstBlog",
+            "Title": "First blog",
+            "Description": "This is the first MarkdownBlog post to be published on the 0x4248 blog.",
+            "Date": "2024-05-15",
+            "Keywords": "first, blog, markdown",
+            "Author": "0x4248",
+            "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200",
+            "Tags": [
+                "general"
+            ]
+        },
+        {
+            "location": "/Blog/pages/SeeingWhatFilesAProcessIsUsing",
+            "Title": "Seing what files a process is using in Linux",
+            "Description": "This is a quick guide on how to see what files a process is using in Linux",
+            "Date": "2024-05-26",
+            "Keywords": "Linux, Process, Files",
+            "Author": "0x4248",
+            "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200",
+            "Tags": [
+                "Linux"
+            ]
+        },
+        {
+            "location": "/Blog/pages/HowIUseObsidian",
+            "Title": "How I use Obsidian",
+            "Description": "In this post, I will explain how I use Obsidian to take notes, manage my projects, and capture my ideas.",
+            "Date": "2024-06-05",
+            "Keywords": "Obsidian, Note-taking, Productivity",
+            "Author": "0x4248",
+            "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200",
+            "Tags": [
+                "Obsidian"
+            ]
+        },
+        {
+            "location": "/Blog/pages/WhyISwitchedFromDebianToArchLinux",
+            "Title": "Why I Switched From Debian To Arch Linux",
+            "Description": "Why I switched from Debian to Arch Linux and how it has been a better distro for me.",
+            "Date": "2024-06-22",
+            "Keywords": "Debian, Arch Linux, Linux, Operating System, Distro",
+            "Author": "0x4248",
+            "Image": "https://0x4248.tech/Blog/content/img/debian_meme.png",
+            "Tags": [
+                "Debian",
+                "Arch Linux",
+                "Linux"
             ]
         }
     ]
