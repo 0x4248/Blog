@@ -16,28 +16,51 @@
 * you can always run `make css-restore-base` to restore the base.css
 */
 
+
 :root {
-    --text-primary: #222;
-    --code-text: #000000;
-    --code-bg: #eee;
-    --pre-bg: #f7f7f7;
-    --bg-primary: #eee;
-    --bg-secondary: #fff;
-    --link: #007bff;
-    --link-hover: #0056b3;
-    --footer-bg: #fff;
-    --nav-bg: #e9e9e95b;
+    --background-colour-dark: #0a0a0a;
+    --background-colour-light: #0a0a0a;
+    --light-gray: #aaaaaa;
+    --text-colour: #f2f2f2;
+    --text-alt-colour: #4a95ec;
+    --text-alt-colour-darker: #3976bc;
+
+}
+
+
+:root {
+    --text-primary: #f2f2f2;
+    --code-text: #f2f2f2;
+    --code-bg: #0a0a0a;
+    --pre-bg: #0a0a0a;
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1b1b1b;
+    --link: #4a95ec;
+    --link-hover: #3976bc;
+    --footer-bg: #1b1b1b;
+    --nav-bg: #3333335b;
+    --dot-bg: var(--background-colour-dark);
+    --dot-color: #272727;
+    --dot-size: 2px;
+    --dot-space: 22px;
 }
 
 html {
-    scroll-behavior: smooth;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+    color: var(--text-colour);
+    background-color: var(--background-colour-dark);
+    background:
+        linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+        linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+        var(--dot-color);     
 }
+
 body {
     font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     color: var(--text-primary);
-    background-color: var(--bg-primary);
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
@@ -52,6 +75,11 @@ h6 {
     font-weight: bold;
     margin: 0;
     padding: 0;
+    color: var(--text-alt-colour);
+}
+
+h1 {
+    color: var(--text-primary);
 }
 
 a {
@@ -158,18 +186,7 @@ code {
 
 
 @media screen and (prefers-color-scheme: dark) {
-    :root {
-        --text-primary: #dedede;
-        --code-text: #fff;
-        --code-bg: #222;
-        --pre-bg: #2f2f2f;
-        --bg-primary: #222;
-        --bg-secondary: #2f2f2f;
-        --link: #007bff;
-        --link-hover: #0056b3;
-        --footer-bg: #2f2f2f;
-        --nav-bg: #3333335b;
-    }
+
 }
 
 
