@@ -103,20 +103,6 @@
             "Tags": [
                 "Obsidian"
             ]
-        },
-        {
-            "location": "/Blog/pages/WhyISwitchedFromDebianToArchLinux",
-            "Title": "Why I Switched From Debian To Arch Linux",
-            "Description": "Why I switched from Debian to Arch Linux and how it has been a better distro for me.",
-            "Date": "2024-06-22",
-            "Keywords": "Debian, Arch Linux, Linux, Operating System, Distro",
-            "Author": "0x4248",
-            "Image": "https://0x4248.tech/Blog/content/img/debian_meme.png",
-            "Tags": [
-                "Debian",
-                "Arch Linux",
-                "Linux"
-            ]
         }
     ]
 }
