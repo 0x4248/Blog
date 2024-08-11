@@ -1,6 +1,19 @@
 {
     "pages": [
         {
+            "location": "/Blog/pages/MinimalLinuxSystem",
+            "Title": "Building a Minimal Linux System With a initramfs",
+            "Description": "In this post I will be discussing the process of building the Linux kernel and running it in qemu with a basic busybox initramfs.",
+            "Date": "2024-05-15",
+            "Keywords": "Linux, Kernel, qemu, initramfs, busybox",
+            "Author": "0x4248",
+            "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200",
+            "Tags": [
+                "Linux",
+                "OS Development"
+            ]
+        },
+        {
             "location": "/Blog/pages/WhyTechCompaniesShouldGiveMoreConsent",
             "Title": "Why Tech Companies Should Give More Consent",
             "Description": "Recently tech giants have been focusing on AI and on how it can help you as a person get things done. Recently AI models have switched from learning off books and the internet to learning off you as a person. This can be a problem for your privacy.",
@@ -52,20 +65,6 @@
                 "Assembly",
                 "Linux",
                 "ARM64"
-            ]
-        },
-        {
-            "location": "/Blog/pages/LFS",
-            "Title": "Linux from Scratch",
-            "Description": "In this post I will be discussing the process of building the Linux kernel and running it in qemu.",
-            "Date": "2024-05-15",
-            "Keywords": "Linux, Kernel, Qemu, Linux from Scratch",
-            "Author": "0x4248",
-            "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200",
-            "Tags": [
-                "Linux",
-                "OS Development",
-                "Linux from Scratch"
             ]
         },
         {

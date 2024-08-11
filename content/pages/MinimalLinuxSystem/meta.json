@@ -1,0 +1,10 @@
+{
+    "location": "/Blog/pages/MinimalLinuxSystem",
+    "Title": "Building a Minimal Linux System With a initramfs",
+    "Description": "In this post I will be discussing the process of building the Linux kernel and running it in qemu with a basic busybox initramfs.",
+    "Date": "2024-05-15",
+    "Keywords": "Linux, Kernel, qemu, initramfs, busybox",
+    "Author": "0x4248",
+    "Image": "https://avatars.githubusercontent.com/u/60709927?v=4&s=200",
+    "Tags": ["Linux", "OS Development"]
+}

@@ -3,12 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Linux from Scratch</title>
-        <meta name="description" content="In this post I will be discussing the process of building the Linux kernel and running it in qemu.">
+        <title>Building a Minimal Linux System With a initramfs</title>
+        <meta name="description" content="In this post I will be discussing the process of building the Linux kernel and running it in qemu with a basic busybox initramfs.">
         <meta name="author" content="0x4248">
-        <meta name="keywords" content="Linux, Kernel, Qemu, Linux from Scratch">
-        <meta name="og:title" content="Linux from Scratch">
-        <meta name="og:description" content="In this post I will be discussing the process of building the Linux kernel and running it in qemu.">
+        <meta name="keywords" content="Linux, Kernel, qemu, initramfs, busybox">
+        <meta name="og:title" content="Building a Minimal Linux System With a initramfs">
+        <meta name="og:description" content="In this post I will be discussing the process of building the Linux kernel and running it in qemu with a basic busybox initramfs.">
         <meta name="og:image" content="https://avatars.githubusercontent.com/u/60709927?v=4&s=200">
         <meta name="og:created_time" content="2024-05-15">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,9 +30,9 @@
         </div>
         <br style="width: 100px;">
         <div class='main' id='main'>
-<p class='date'>2024-05-15</p>			<h1>Linux from scratch (ARM64)</h1>
+<p class='date'>2024-05-15</p>			<h1>Building a Minimal Linux System With a initramfs (ARM64)</h1>
 			<hr />
-			<p>This is a tutorial on how to build linux from scratch </p>
+			<p>In this tutorial we will be building a minimal linux system with a initramfs from scratch. We will also test the linux kernel using QEMU.</p>
 			<h2>Dependencies</h2>
 			<pre>
 apt-get update
@@ -109,7 +109,7 @@ mkdir /proc /sys /tmp
 mount -t proc none /proc
 mount -t sysfs none /sys
 mount -t tmpfs none /tmp
-echo "Welcome to LFS"
+echo "Welcome to Linux"
 
 exec /bin/sh
 			</pre>
@@ -137,7 +137,7 @@ qemu-system-aarch64 -kernel ~/linux/arch/arm64/boot/Image -initrd ~/initramfs.cp
 			
 			<p>This should boot linux and you should see the following:</p>
 			<pre>
-Welcome to LFS
+Welcome to Linux
 ~ # 
 			</pre>
 			

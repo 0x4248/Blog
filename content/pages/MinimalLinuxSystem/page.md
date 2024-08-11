@@ -1,6 +1,6 @@
-# Linux from scratch (ARM64)
+# Building a Minimal Linux System With a initramfs (ARM64)
 ***
-This is a tutorial on how to build linux from scratch 
+In this tutorial we will be building a minimal linux system with a initramfs from scratch. We will also test the linux kernel using QEMU.
 
 ## Dependencies
 
@@ -98,7 +98,7 @@ mkdir /proc /sys /tmp
 mount -t proc none /proc
 mount -t sysfs none /sys
 mount -t tmpfs none /tmp
-echo "Welcome to LFS"
+echo "Welcome to Linux"
 
 exec /bin/sh
 ```
@@ -132,7 +132,7 @@ qemu-system-aarch64 -kernel ~/linux/arch/arm64/boot/Image -initrd ~/initramfs.cp
 This should boot linux and you should see the following:
 
 ```bash
-Welcome to LFS
+Welcome to Linux
 ~ # 
 ```
 

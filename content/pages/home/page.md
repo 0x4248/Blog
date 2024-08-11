@@ -10,7 +10,7 @@ For a full list of blogs click [here](https://0x4248.tech/Blog/pages).
 <ul style="list-style-type: none;">
     <li><a href="HowIUseObsidian"><i class="bi bi-file-earmark"></i> How I use Obsidian</a>
     <li><a href="YourFirstARMAssemblyProgram"><i class="bi bi-file-earmark"></i> Your First ARM Assembly Program</a>
-    <li><a href="LFS"><i class="bi bi-file-earmark"></i> Linux from scratch (ARM64)</a>
+    <li><a href="MinimalLinuxSystem"><i class="bi bi-file-earmark"></i> Building a Minimal Linux System With a initramfs (ARM64)</a>
     <li><a href="SeeingWhatFilesAProcessIsUsing"><i class="bi bi-file-earmark"></i> Seeing what files a process is using in Linux</a>
     <li><a href="TurningFilesToVideos"><i class="bi bi-file-earmark"></i> Turning files into videos</a>
 </ul>
