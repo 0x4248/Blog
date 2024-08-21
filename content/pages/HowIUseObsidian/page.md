@@ -3,7 +3,7 @@
 ## What is obsidian? 
 Obsidian is a markdown note taking app that is heavily customisable and and be used for almost any type of notes.
 
-<img src="https://0x4248.tech/Blog/content/img/Vault demo.png">
+<img src="https://0x4248.dev/Blog/content/img/Vault demo.png">
 
 ## Why do I use it?
 I use obsidian to organise my ideas, projects and knowledge. Obsidian uses a note linking system that allows you to link other notes using links and tags which makes a graph of your notes which can be helpful in organising notes.
@@ -203,9 +203,9 @@ The main font in the vault is Jetbrains Mono with neardfonts. Here are all the f
 #### Page colours
 I colour my pages to help give my notes more life and to help separate parts of my notes 
 
-<img src="https://0x4248.tech/Blog/content/img/Page colours 1.png">
+<img src="https://0x4248.dev/Blog/content/img/Page colours 1.png">
 
-<img src="https://0x4248.tech/Blog/content/img/Page colours 2.png">
+<img src="https://0x4248.dev/Blog/content/img/Page colours 2.png">
 
 Again this is part of my vault base template and CSS snippets.
 
